@@ -18,7 +18,7 @@ class airsim_client:
 
     #     self.setpoints = uav_setpoints()
 
-    def moveToPosition(self, x, y, z, max_v):
+    def moveToPosition(self, x, y, z, max_v, dist_thres=0.15, stable_time_thres=0.8):
         currentPos = self.client.getMultirotorState().kinematics_estimated.position
         current_dist = (
             (currentPos.x_val - x) ** 2
@@ -33,7 +33,7 @@ class airsim_client:
         timer_end = time.time()
         iter_times = 0
         delta_t = 0.05
-        while current_dist > 0.15 or timer <= 0.8 or timer_on_flag == False:
+        while current_dist > dist_thres or timer < stable_time_thres or timer_on_flag == False:
             iter_times += 1
             # Calculate and move to target
             delta_x = x - currentPos.x_val
