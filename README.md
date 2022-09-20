@@ -1,6 +1,6 @@
-# A-Simple-Alternative-for-moveToPositionAsync-in-AirSim
+# A Simple Alternative for function moveToPositionAsync in AirSim
 
-I found the moveToPositionAsync function in AirSim not accurate enough, so I came up of a substitution for it.
+I found the moveToPositionAsync function in AirSim not accurate enough, while moveByVelocityAsync seems more reliable, so I came up of a substitution.
 
 This is just a simple and naive solution, please only use when there's no critical demand to the performance.
 
